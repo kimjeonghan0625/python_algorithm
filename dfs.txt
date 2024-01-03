@@ -1,0 +1,20 @@
+ curr_time = 1
+ DFS (v): # v를 방문중
+     mark[v] = "visited"
+     pre[v] = curr_time
+     curr_time += 1
+     for each edge(v, w)
+        if mark[w] != "visited":
+            parent[w] = v
+            DFS(w)
+    # v에 인접한 모든 노드를 고려함!
+    post[v] = curr_time
+    curr_time += 1
+
+DFSALL(G): # G를 DFS search
+    for all nodes in G:
+        mark[v] = "unvisited"
+    for all nodes v:
+        if mark[v] != "visited":
+            DFS(v)
+    
