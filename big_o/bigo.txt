@@ -1,0 +1,5 @@
+best case : 오메가
+average case: 평균
+bigO : 최악
+
+O(n) = 
