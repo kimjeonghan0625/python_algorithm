@@ -27,7 +27,7 @@ class ChainedHash:
     def search(self, key: Any) -> Any:
         hash = self.hash_value(key)
         p = self.table[hash]
-        
+
         while p is not None:
             if p.key == key:
                 return p.value
@@ -42,9 +42,31 @@ class ChainedHash:
             if p.key == key:
                 return False
             p = p.next
-        
+
         temp = Node(key, value, self.table[hash])
         self.table[hash] = temp
         return True
-    
-    def remove(self, key:Any) -> bool:
+
+    def remove(self, key: Any) -> bool:
+        """키가 key인 원소를 삭제"""
+        hash = self.hash_value(key)
+        p = self.table[hash]
+        pp = None
+
+        while p is not None:
+            if p.key == key:
+                if pp is None:
+                    self.table[hash] = p.next
+                else:
+                    pp.next = p.next
+                return True
+        return False
+
+    def dump(self) -> None:
+        for i in range(self.capacity):
+            p = self.table[i]
+            print(i, end="")
+            while p is not None:
+                print(f"  -> {p.key} ({p.value})", end="")
+                p = p.next
+            print()
