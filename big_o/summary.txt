@@ -1,0 +1,4 @@
+O(n**2) == Loop within a Loop
+O(n) == Proportional
+O(log n) == Divide and Conquer
+O(1) == Constant
