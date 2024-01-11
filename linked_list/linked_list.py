@@ -28,15 +28,54 @@ class LinkedList:
         self.length += 1
         return True
 
+    def pop(self):
+        # example code
+        if self.length == 0:
+            return None
+        pre = temp = self.head
+        while temp.next is not None:
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+        return temp
+
+        # my code
+        # # head와 tail 모두 None인 경우
+        # if self.length == 0:
+        #     return None
+        # # 노드가 하나밖에 없어서 head와 tail이 같은 경우
+        # if self.head == self.tail:
+        #     tmp = self.head
+        #     self.head = None
+        #     self.tail = None
+        #     self.length -= 1
+        #     return tmp
+        # # 일반적인 경우
+        # pre = temp = self.head
+        # while True:
+        #     temp = temp.next
+        #     if temp.next == None:
+        #         self.tail = pre
+        #         self.tail.next = None
+        #         self.length -= 1
+        #         return temp
+        #     pre = temp
+
+        # target = None
+        # tmp_node = self.head
+        # while tmp_node.next:
+        #     if tmp_node.next == self.tail:
+        #         target = tmp_node
+        #         pop_node = self.tail
+        #         target.next = None
+        #         self.tail = target
+        #         return pop_node
+        #     tmp_node = tmp_node.next
+
 
 my_linked_list = LinkedList(1)
-my_linked_list.append(2)
-my_linked_list.append(3)
-my_linked_list.append(4)
-print(my_linked_list.append(5))
-
-
-my_linked_list.print_list()
-print(my_linked_list.length)
-print(my_linked_list.head.value)
-print(my_linked_list.tail.value)
