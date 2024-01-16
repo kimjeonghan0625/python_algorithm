@@ -159,9 +159,9 @@ class LinkedList:
         if index < 0 or index >= self.length:
             return None
         if index == 0:
-            self.pop_first()
+            return self.pop_first()
         if index == self.length - 1:
-            self.pop()
+            return self.pop()
         pre = self.get(index - 1)
         temp = pre.next
         pre.next = temp.next
@@ -169,12 +169,23 @@ class LinkedList:
         self.length -= 1
         return temp
 
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
 
-my_linked_list = LinkedList(11)
+
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
 my_linked_list.append(3)
-my_linked_list.append(23)
-my_linked_list.append(7)
+my_linked_list.append(4)
 
-print(my_linked_list.remove(2).value, "\n")
-
+my_linked_list.reverse()
 my_linked_list.print_list()
