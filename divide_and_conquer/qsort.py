@@ -17,9 +17,20 @@ def q_sort(array, start, end):
     q_sort(array, right + 1, end)
 
 
-n = int(input())
+def q_sort2(array):
+    if len(array) <= 1:
+        return array
+    p = array[0]
+    remain = array[1:]
+    left = [x for x in remain if x <= p]
+    right = [x for x in remain if x > p]
+    return q_sort2(left) + [p] + q_sort2(right)
+
+
+# n = int(input())
 array = list(map(int, input().split()))
-q_sort(array, 0, n - 1)
-for e in array:
-    print(e, end=" ")
-print()
+a=q_sort2(array)
+print(a)
+# for e in array:
+#     print(e, end=" ")
+# print()
